@@ -1,43 +1,53 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package days;
+import java.util.Scanner;
 
-/**
- *
- * @author sivagamasrinivasan
- */
-public class Weekdays 
-{
-  public void nameOfDay(String code)
-     {
-    switch(code.toUpperCase())
-      {
-      case "ONE":
-        System.out.println("Monday");
-        break;
-      case "TWO":
-        System.out.println("Tuesday");
-        break;
-      case "THREE":
-        System.out.println("Wednesday");
-        break;
-      case "FOUR":
-        System.out.println("Thursday");
-        break;
-      case "FIVE":
-        System.out.println("Friday");
-        break;
-      case "SIX":
-        System.out.println("Saturday");
-        break;
-      case "SEVEN":
-        System.out.println("Sunday");
-        break;
+public class Weekdays {
+
+    public enum Weekday {
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
     }
-  
-}
-}
 
+    public void nameOfDay(Weekday day) {
+        switch (day) {
+            case MONDAY:
+                System.out.println("Monday");
+                break;
+            case TUESDAY:
+                System.out.println("Tuesday");
+                break;
+            case WEDNESDAY:
+                System.out.println("Wednesday");
+                break;
+            case THURSDAY:
+                System.out.println("Thursday");
+                break;
+            case FRIDAY:
+                System.out.println("Friday");
+                break;
+            case SATURDAY:
+                System.out.println("Saturday");
+                break;
+            case SUNDAY:
+                System.out.println("Sunday");
+                break;
+            default:
+                System.out.println("Invalid day");
+                break;
+        }
+    }
 
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the day number (1-7):");
+        int dayNumber = in.nextInt();
+
+        Weekday[] days = Weekday.values();
+        if (dayNumber >= 1 && dayNumber <= days.length) {
+            Weekday chosenDay = days[dayNumber - 1];
+
+            Weekdays weekdays = new Weekdays();
+            weekdays.nameOfDay(chosenDay);
+        } else {
+            System.out.println("Invalid day number.");
+        }
+    }
+}
